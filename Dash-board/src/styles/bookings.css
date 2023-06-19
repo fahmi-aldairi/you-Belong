@@ -1,0 +1,88 @@
+.bookings {
+  margin-top: 100px;
+
+  padding: 0px 30px;
+  padding-bottom: 50px;
+}
+
+/******************* user details ***************/
+
+.alluser_details {
+  position: relative;
+  width: 120%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+  grid-gap: 30px;
+  margin-top: 1px;
+}
+
+.alluser_details .order_user_list {
+  position: relative;
+  display: grid;
+  min-height: 10px;
+  background-color: var(--primary-color);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(255, 255, 255, 0.08);
+  border-radius: 25px;
+}
+
+.alluser_details .order_user_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.alluser_details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.alluser_details table thead td {
+  font-weight: 500;
+}
+
+.alluser_details table td {
+  padding: 20px;
+}
+
+.alluser_details table tr {
+  color: white;
+  border-bottom: 1px solid white;
+
+}
+
+.alluser_details table tbody tr:hover {
+  background-color: #f5f5f5;
+  color: black;
+}
+
+.alluser_details table tr td:last-child {
+  text-align: end;
+}
+
+.alluser_details table tr td:nth-child(2) {
+  text-align: end;
+}
+
+.alluser_details table tr td:nth-child(3) {
+  text-align: end;
+}
+
+.alluser_details table tr td:nth-child(4) {
+  text-align: end;
+}
+
+.alluser_details .more_details_btn {
+  background-color: greenyellow;
+  padding: 2px 4px;
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.alluser_details .delete__icon {
+  color: red;
+}
