@@ -6,6 +6,7 @@ const adminController = require("../controllers/adminController");
 const donationForm = require("../controllers/donationFoController");
 const AboutUsController = require("../controllers/AboutUsController");
 const contactUsController = require("../controllers/contactUsController");
+const StoryController = require("../controllers/SuccessStotiescontroller");
 const verifyJWT = require("../middleware/verifyJWT");
 const multer = require("multer");
 const path = require("path");
@@ -113,5 +114,9 @@ router.put("/aboutus", AboutUsController.aboutUsUpdate);
 
 // post the data from the contact us form
 router.post("/contacts", contactUsController.postContactUsData);
+
+//////////////// Success Story
+router.post("/createStory", StoryController.handleNewStory);
+router.get("/AllStories", StoryController.getAllStories);
 
 module.exports = router;

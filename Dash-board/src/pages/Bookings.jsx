@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar/Sidebar";
+import Swal from "sweetalert2";
 
 const Bookings = () => {
   const [beneficer, setBeneficer] = useState([]);
@@ -35,6 +36,13 @@ const Bookings = () => {
       );
       setIsDeleted(!isDeletedd);
     } catch {}
+    Swal.fire({
+      position: "center",
+      icon: "failed",
+      title: "تمت الحذف بنجاح",
+      showConfirmButton: false,
+      timer: 1800,
+    });
   };
   return (
     <div className="bookings" dir="rtl">

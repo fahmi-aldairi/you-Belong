@@ -25,10 +25,12 @@ const ServiceAll = () => {
         console.error(error);
       });
   }, []);
-
+  console.log(formData.length);
   const handlePageChange = (event, page) => {
     setCurrentPage(page);
   };
+
+  console.log(formData);
 
   const indexOfLastBenefice = currentPage * beneficesPerPage;
   const indexOfFirstBenefice = indexOfLastBenefice - beneficesPerPage;
@@ -82,7 +84,7 @@ const ServiceAll = () => {
 
       <div>
         <center>
-          <h5 className="mb-2 text-2xl font-bold tracking-tight mt-10 text-3xl  text-[#008080] dark:text-white">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight mt-10 text-[#008080] dark:text-white">
             ساعد محتاج الآن{" "}
           </h5>
         </center>
@@ -104,8 +106,8 @@ const ServiceAll = () => {
         </div>
         {/* عرض الفوائد */}
         <div className="flex flex-wrap gap-10 justify-center my-16 pagenation">
-          {currentBenefices.map((benefice) => {
-            if (benefice.isApproved) {
+          {formData.map((benefice) => {
+            if (benefice.isApproved == true ) {
               return (
                 <div key={benefice._id}>
                   <div key={benefice._id}>
@@ -143,7 +145,7 @@ const ServiceAll = () => {
                           {benefice.TitleOfConsept}
                         </p>
                         <p>المبلغ المطلوب: {benefice.totalPriceByAdmin}</p>
-                        <p>نوع المساعدة: {benefice.typeOfneeds}</p>
+                        {/* <p>نوع المساعدة: {benefice.typeOfneeds}</p> */}
 
                         <div className="flex justify-center mt-4 bg-[#8dbbd0] p-1 gap-2">
                           <Link to={`/pay/${benefice._id}`}>

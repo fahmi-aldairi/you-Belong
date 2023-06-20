@@ -64,31 +64,21 @@ const Details = () => {
         <Sidebar />
         <div className="box">
           <div className="images">
-            {/* <div className="img-holder active">
-              <img src={img} />
-            </div>
-            <div className="img-holder">
-              <img src={img} />
-            </div>
-            <div className="img-holder">
-              <img src={img} />
-            </div>
-            <div className="img-holder">
-              <img src={img} />
-            </div> */}
             {details.Images?.map((image, index) => (
               <img
                 alt="image"
                 src={`http://localhost:5000/${image}`}
                 className="img-holder"
-                style={{ height: "300px" }}
+                style={{ height: "300px", width: "700px" }}
                 key={index}
               />
             ))}
           </div>
 
           <div className="basic-info">
-            <h1>بيانات الطلب</h1>
+            <h1 style={{ fontWeight: "bold", fontSize: "20px" }}>
+              بيانات الطلب
+            </h1>
           </div>
           <div className="info">
             <p>الأسم: {details.fullName}</p>
@@ -98,16 +88,17 @@ const Details = () => {
               العنوان:{" "}
               {`${details.city}/${details.streetName}/${details.buldingNumber}`}
             </p>
-            <p className="p_story">قصتي: {details.DescriptionOfConsept}</p>
+            <p className="p_story">قصتي : {details.DescriptionOfConsept}</p>
             <div>
               {" "}
-              <div>ادخل المبلغ</div>{" "}
+              <div> أدخل المبلغ المتوقع:</div>{" "}
               <input
                 type="text"
                 name="totalPriceByAdmin"
                 onChange={handleChange}
                 id=""
-                className=" border border-black "
+                className=" border border-black mt-3 mb-3 py-2 px-4 "
+                placeholder="أدخل المبلغ  المحتمل  للتبرع "
               />
             </div>
             {details.medicalReport?.map((report, index) => (
@@ -118,7 +109,7 @@ const Details = () => {
                     href={`http://localhost:5000/${report}`}
                     download
                   >
-                    Click here to download the Reports
+                    Click here to download the <b>Reports</b>
                   </a>
                 </div>
               </div>
@@ -126,10 +117,10 @@ const Details = () => {
 
             <div className="approve_req">
               <button onClick={() => handleAccept(details._id)}>
-                <i class="fa-solid fa-check yes"></i>
+                <i class="fa-solid fa-check yes mt-5"></i>
               </button>
               <button onClick={() => handleDelete(details._id)}>
-                <i className="ri-delete-bin-6-fill delete__icon"></i>
+                <i className="ri-delete-bin-6-fill delete__icon mt-5"></i>
               </button>
             </div>
           </div>

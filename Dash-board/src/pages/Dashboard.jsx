@@ -9,24 +9,6 @@ import MileChart from "../charts/MileChart";
 import CarStatsChart from "../charts/CarStatsChart";
 import Sidebar from "../components/Sidebar/Sidebar";
 
-const carObj = {
-  title: "عدد المتبرعين",
-  totalNumber: 15,
-  icon: "ri-user-line",
-};
-
-const tripObj = {
-  title: "عدد المستخدمين",
-  totalNumber: 27,
-  icon: "ri-user-line",
-};
-
-const clientObj = {
-  title: "عدد المرضى",
-  totalNumber: 12,
-  icon: "ri-user-line",
-};
-
 // const distanceObj = {
 //   title: "Kilometers Daily",
 //   totalNumber: 2167,
@@ -35,6 +17,8 @@ const clientObj = {
 
 const Dashboard = () => {
   const [donation, setDonation] = useState([]);
+  const [donors, setDonors] = useState([]);
+  const [bene, setBene] = useState([]);
 
   useEffect(() => {
     const fetchAllResort = async () => {
@@ -47,6 +31,51 @@ const Dashboard = () => {
     };
     fetchAllResort();
   }, []);
+
+  console.log(donation);
+
+  useEffect(() => {
+    const fetchAllResort = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/getAllDonors");
+        setDonors(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchAllResort();
+  }, []);
+
+  useEffect(() => {
+    const fetchAllResort = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/getAllBeneficer");
+        setBene(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchAllResort();
+  }, []);
+
+  const carObj = {
+    title: "عدد المتبرعين",
+    totalNumber: donors.length,
+    icon: "ri-user-line",
+  };
+
+  const tripObj = {
+    title: "عدد المستخدمين",
+    totalNumber: bene.length,
+    icon: "ri-user-line",
+  };
+
+  const clientObj = {
+    title: "عدد المرضى",
+    totalNumber: donation.length,
+    icon: "ri-user-line",
+  };
+
   return (
     <div className="dashboard" dir="rtl">
       <Sidebar />

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
@@ -14,10 +15,11 @@ function BenifactorForm() {
     buldingNumber: "",
     TitleOfConsept: "",
     DescriptionOfConsept: "",
-    typeOfneeds: "",
+    typeOfneeds: "مبلغ نقدي",
   });
   const [images, setImages] = useState([]);
   const [reports, setReports] = useState([]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -28,18 +30,6 @@ function BenifactorForm() {
   const handleReportsChange = (event) => {
     setReports([...event.target.files]);
   };
-
-  // const handleShowpay = (e) => {
-  //   setFormData({ ...formData, [e.target.name]: e.target.value });
-  //   setshow("showmoney");
-  //   console.log("showed");
-  // };
-  // const handleHidepay = (e) => {
-  //   setFormData({ ...formData, [e.target.name]: e.target.value });
-  //   setshow("hide");
-  //   console.log("hide");
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
@@ -130,7 +120,7 @@ function BenifactorForm() {
                 type="text"
                 id="name"
                 name="fullName"
-                placeholder="Name"
+                placeholder="الاسم الكامل"
                 class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
                       text-gray-600 placeholder-gray-400
                       outline-none"
@@ -150,7 +140,7 @@ function BenifactorForm() {
                 type="tel"
                 id="number"
                 name="phone"
-                placeholder="number"
+                placeholder="رقم الهاتف"
                 class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
                       text-gray-600 placeholder-gray-400
                       outline-none"
@@ -169,7 +159,7 @@ function BenifactorForm() {
                 type="tel"
                 id="number"
                 name="email"
-                placeholder="number"
+                placeholder="البريد الالكتروني"
                 class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
                       text-gray-600 placeholder-gray-400
                       outline-none"
@@ -320,7 +310,7 @@ function BenifactorForm() {
                                  font-bold text-gray-600"
               >
                 {" "}
-                صورة شخصية{" "}
+                صور الحالة{" "}
               </label>
               <input
                 type="file"
@@ -331,15 +321,16 @@ function BenifactorForm() {
                       outline-none"
                 multiple
                 onChange={handleImagesChange}
+                style={{ padding: "10px 20px" }}
               />
             </div>
-            <div class="flex items-center mb-5">
+            <div class="flex items-center mb-16">
               <label
                 for="number"
                 class="inline-block w-20 mr-6 text-right 
                                  font-bold text-gray-600"
               >
-                التقارير الطبية
+                التقارير
               </label>
               <input
                 type="file"
@@ -350,10 +341,11 @@ function BenifactorForm() {
                       outline-none"
                 multiple
                 onChange={handleReportsChange}
+                style={{ padding: "10px 20px" }}
               />
             </div>
 
-            <div class="flex items-center mb-5">
+            {/* <div class="flex items-center mb-5">
               <input
                 type="text"
                 id="number"
@@ -364,9 +356,9 @@ function BenifactorForm() {
                       "
                 disabled
               />
-            </div>
+            </div> */}
 
-            <div class="">
+            {/* <div class="">
               <div class="flex items-center pl-4 border border-gray-200 rounded mb-4 dark:border-gray-700">
                 <input
                   id="bordered-radio-1"
@@ -427,16 +419,19 @@ function BenifactorForm() {
                   مواد تموينية
                 </label>
               </div>
-            </div>
+            </div> */}
 
-            <div class="text-right">
-              <button
-                type="submit"
-                class="py-3 px-8 bg-green-400 text-white font-bold"
-                onClick={showSuccessAlert}
-              >
-                تأكيد
-              </button>
+            <div className="flex justify-center">
+              {" "}
+              <div class="text-right ">
+                <button
+                  type="submit"
+                  class="py-3 px-8 bg-green-400 text-white font-bold"
+                  onClick={showSuccessAlert}
+                >
+                  تأكيد
+                </button>
+              </div>
             </div>
           </form>
         </div>

@@ -14,8 +14,6 @@ function BenDetails() {
   }, []);
 
   const getDetailsData = async () => {
-    // const id = sessionStorage.getItem("cardId");
-    // console.log(id);
     try {
       const response = await axios.get(
         `http://localhost:5000/getForms/${formId}`
@@ -30,16 +28,6 @@ function BenDetails() {
   if (data.length === 0) {
     return <div>Loading...</div>;
   }
-
-  //   const {
-  //     fullName,
-  //     phone,
-  //     city,
-  //     totalPrice,
-  //     DescriptionOfConsept,
-  //     Images
-  //   } = data;
-  // console.log(data);
 
   return (
     <>
@@ -91,7 +79,6 @@ function BenDetails() {
             <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
               <div className="col-2">
                 <div className="aspect-w-1 aspect-h-3">
-                  {/* {console.log(data[0]?.Images)} */}
                   {data.Images?.slice(0, 1).map((image, index) => (
                     <img
                       alt="image"
@@ -141,7 +128,7 @@ function BenDetails() {
                         العنوان
                       </td>
                       <td className="whitespace-wrap px-5 py-5 text-gray-700 bg-white shadow-lg">
-                        {data.city}
+                        {`${data.city}-${data.streetName}`}
                       </td>
                     </tr>
                     <tr className="odd:bg-gray-50">
@@ -149,7 +136,15 @@ function BenDetails() {
                         المبلغ
                       </td>
                       <td className="whitespace-wrap px-5 py-5 text-gray-700 bg-white shadow-lg">
-                        {data.totalPrice}
+                        {`${data.totalPriceByAdmin} دينار`}
+                      </td>
+                    </tr>
+                    <tr className="odd:bg-gray-50">
+                      <td className="whitespace-wrap px-5 py-5 font-medium text-gray-900 bg-white shadow-lg">
+                        المبلغ المدفوع
+                      </td>
+                      <td className="whitespace-wrap px-5 py-5 text-gray-700 bg-white shadow-lg">
+                        {`${data.sumOfPaid} دينار`}
                       </td>
                     </tr>
                   </tbody>

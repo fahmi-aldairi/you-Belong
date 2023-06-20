@@ -32,16 +32,16 @@
   background-color: white;
   border-radius: 10px;
   box-shadow: 5px 5px 10px 1px rgb(0, 0, 0, 12%);
-  padding: 45px;
+  padding: 40px;
   margin: 15px 0;
-  width: 950px;
+  width: 1000px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto 1fr;
   grid-template-areas:
     "images info"
     "images description";
-  grid-gap: 35px;
+  grid-gap: 30px;
 }
 
 .containerr .box .images {
